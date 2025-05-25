@@ -1,0 +1,57 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+
+# === Virtual Environment ===
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# === Django ===
+*.log
+*.pot
+*.pyc
+*.db
+db.sqlite3
+migrations/
+
+# === OS Specific ===
+.DS_Store
+Thumbs.db
+
+# === Editor Configs ===
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# === Static & Media Files ===
+staticfiles/
+media/
+*.sass-cache
+*.coverage
+
+# === Environment Files ===
+.env
+.env.*
+
+# === Compiled HTML/CSS/JS (optional) ===
+*.map
+
+# === Node Modules (if you use Tailwind or npm) ===
+node_modules/
+
+# === Build Files ===
+dist/
+build/
+
+# === Backup Files ===
+*.bak
+*.swp
+*.tmp

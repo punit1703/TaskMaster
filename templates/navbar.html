@@ -1,7 +1,8 @@
 <nav>
-    <h1>Logo</h1>
+    <h1>{{request.user.username}}</h1>
     <form action="" method="GET">
         <input type="text" name="q" placeholder="Search for todo...">
     </form>
+    <a href="{% url 'logout' %}">logout</a>
 </nav>
 <hr>

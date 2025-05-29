@@ -22,6 +22,9 @@
         </div>
     </div>
     <div class="todo-list">
+        <p>{{tasks_count}} Task Available</p>
+        <p>{{completed_count}} Task completed</p>
+        <p>{{not_completed}} Task not completed</p>
         <a href="{% url 'create' %}">Create</a>
         {% for task in tasks %}
             <form method="POST" action="{% url 'toggle-completion' task.id %}">

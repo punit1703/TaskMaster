@@ -4,27 +4,28 @@ from .models import Task, Category
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
-
-# Create your views here.
-@login_required
+@login_required(login_url='login')
 def homePage(request):
     categories = Category.objects.all()
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-    tasks = Task.objects.filter(
+    tasks = Task.objects.filter(user = request.user).filter(
         Q(title__icontains=q) |
         Q(category__name__icontains=q) |
-        Q(description__icontains=q)
+        Q(description__icontains=q) |
+        Q(is_completed__icontains=q)
     )
-    context = {'tasks':tasks, 'categories': categories}
+    tasks_count = tasks.count()
+    all_tasks_count = Task.objects.filter(user = request.user).count()
+    completed_count = Task.objects.filter(user = request.user, is_completed=True).count()
+    not_completed = all_tasks_count - completed_count
+    context = {'tasks':tasks, 'categories': categories, 'tasks_count': tasks_count, 'completed_count':completed_count,'not_completed': not_completed}
     return render(request,'todo/home.html',context)
 
-@login_required
 def todoView(request,pk):
     task = Task.objects.get(id=pk)
     context = {'task':task}
     return render(request,'todo/todo-view.html',context)    
 
-@login_required
 def todoUpdate(request,pk):
     task = Task.objects.get(id=pk)
     form = TodoForm(instance=task)
@@ -44,7 +45,7 @@ def todoUpdate(request,pk):
     context = {'form':form,'task':task,'categories':categories}
     return render(request,'todo/update-form.html',context)
 
-@login_required
+@login_required(login_url='login')
 def createTodo(request):
     if request.method == 'POST':
         form = TodoForm(request.POST)

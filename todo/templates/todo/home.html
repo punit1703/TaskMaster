@@ -2,6 +2,48 @@
 
 {% block content %}
 
-<h1>home page</h1>
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+</style>
+<div class="container">
+    <div class="sidebar">
+        <div class="user">
 
-{% endblock content %}
+        </div>
+        <div class="categories">
+            <h3>Categories</h3>
+            <h4><a href="{% url 'home' %}">All</a></h4>
+            {% for category in categories %}
+            <h4><a href="{% url 'home' %}?q={{category.name}}">{{category.name}}</a></h4>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="todo-list">
+        <a href="{% url 'create' %}">Create</a>
+        {% for task in tasks %}
+            <form method="POST" action="{% url 'toggle-completion' task.id %}">
+                {% csrf_token %}
+                <input 
+                type="checkbox" 
+                name="completed" 
+                onchange="this.form.submit()" 
+                {% if task.is_completed %}
+                  checked
+                {% endif %}>
+
+                {% if task.is_completed %}
+                    <span style="color: green;">(Completed)</span>
+                {% endif %}
+            </form>
+            <h2><a href="{% url 'todo-view' task.id %}">{{task.title}}</a></h2>
+            <h3>Category: <small>{{task.category}}</small></h3>
+            <a href="{% url 'todo-update' task.id %}">Edit</a>
+            <a href="{% url 'todo-delete' task.id %}">Delete</a>
+            <hr>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

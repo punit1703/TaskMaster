@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="title">Title:</label>
+    {{form.title}}<br /><br />
+
+    <label for="description">Description:</label>
+    {{form.description}}<br /><br />
+
+    <label for="due_date">Due Date:</label>
+    {{form.due_date}}<br /><br />
+
+    <div class="priority">
+        <label for="priority">Priority:</label>
+        {{form.priority}}<br /><br />
+    </div>
+    <div class="categories">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" list="category-list" value="{{ task.category.name }}">
+
+        <datalist id="category-list">
+            {% for category in categories %}
+            <option value="{{ category.name }}">
+                {% endfor %}
+        </datalist>
+
+    </div>
+    <br><br>
+
+    <input type="submit" value="Update">
+</form>
+
+{% endblock content %}

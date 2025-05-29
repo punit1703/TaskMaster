@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2>{{task.title}}</h2>
+<small>{{task.created_at|timesince}} ago</small>
+<p><strong>Category: </strong> {{task.category.name}}</p>
+<p><strong>Description: </strong></p>
+<p>{{task.description}}</p>
+
+{% endblock content %}

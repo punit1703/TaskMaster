@@ -29,38 +29,39 @@ Welcome to the **Todo App**, a full-featured and beautifully styled task managem
 ## 📥 Clone This Repository
 
 ```bash
-git clone https://github.com/your-username/todo-app-django.git
-cd todo-app-django
+git clone https://github.com/punit1703/TaskMaster
+cd TaskMaster
 ```
 ---
 
 ## ⚙️ Setup Instructions
-1. Create Virtual Environment
+<big>1. Create Virtual Environment</big>
+
 ```bash
 python -m venv venv
 ```
-Activate it
+Activate it: 
 - on Windows:
-```bash
-venv\Scripts\activate
-```
+    ```bash
+    venv\Scripts\activate
+    ```
 
 - On macOS/Linux:
-```bash
-source venv/bin/activate
-```
+    ```bash
+    source venv/bin/activate
+    ```
 
-2. Install Dependencies
+<big>2. Install Dependencies</big>
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Apply Migrations
+<big>3. Apply Migrations</big>
 ```bash
 python manage.py migrate
 ```
 
-4. Run Tailwind Django server
+<big>4. Run Tailwind Django server</big>
 ```bash
 python manage.py tailwind start
 python manage.py runserver

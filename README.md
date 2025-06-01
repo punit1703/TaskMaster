@@ -83,5 +83,5 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 For any inquiries, please contact:
 
-- [Punit Patel](mailto:punitr2006@gmail.com) | [LinkedIn](https://www.linkedin.com/in/punit-patel)
+- [Punit Patel](mailto:punitr2006@gmail.com)
 ---

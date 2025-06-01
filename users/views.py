@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
-def userProfile(request, pk):
+def userProfile(request):
     tasks_count = Task.objects.filter(user = request.user).count()
     completed_count = Task.objects.filter(user = request.user, is_completed=True).count()
     not_completed = tasks_count  - completed_count

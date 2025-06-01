@@ -1,8 +1,9 @@
 {% extends 'main.html' %}
 
 {% block content %}
+{% include 'todo/navbar.html' %}
 
-<div class="w-3/5 py-3 mx-auto ">
+<div class="w-full max-w-3xl px-4 sm:px-6 lg:px-8 py-3 mx-auto">
     {% include 'todo/delete-alert.html' with task=task %}
     <div class="mx-auto text-center">
 
@@ -36,11 +37,7 @@
             </div>
         </dl>
     </div>
-    <div class="w-full mt-1 px-10 flex justify-between content-between md:flex-row lg:flex-row sm:flex-col space-y-0 space-x-5">
-        <a href="{% url 'home' %}" 
-            class="sm:mt-2 w-full inline-block px-6 py-2 text-center text-black border transition duration-300 hover:bg-black hover:text-white font-semibold rounded-xl shadow-md">
-            Go Back
-        </a>
+    <div class="w-full mt-6 px-4 flex flex-col sm:flex-row gap-4">
         <a href="{% url 'todo-update' task.id %}" 
             class="sm:mt-2 w-full inline-block px-6 py-2 text-center text-black border transition duration-300 hover:bg-black hover:text-white font-semibold rounded-xl shadow-md">
             Edit

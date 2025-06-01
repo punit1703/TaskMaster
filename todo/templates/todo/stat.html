@@ -1,23 +1,23 @@
-<div class="px-5">
-    <div class="bg-white py-12 border rounded-2xl mt-3">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-3 divide-x divide-dashed divide-indigo-500 text-center">
-                <div class="flex flex-col items-center px-4 space-y-2">
-                    <dd class="text-4xl font-bold text-gray-900">{{ tasks_count }}</dd>
-                    <dt class="text-sm font-medium text-gray-500">Task{{ tasks_count|pluralize }} Available</dt>
-                </div>
-
-                <div class="flex flex-col items-center px-4 space-y-2">
-                    <dd class="text-4xl font-bold text-gray-900">{{completed_count}}</dd>
-                    <dt class="text-sm font-medium text-gray-500">Task{{ completed_count|pluralize }} completed</dt>
-                </div>
-
-                <div class="flex flex-col items-center px-4 space-y-2">
-                    <dd class="text-4xl font-bold text-gray-900">{{not_completed}}</dd>
-                    <dt class="text-sm font-medium text-gray-500">Task{{ completed_count|pluralize }} not completed</dt>
-                </div>
-
-            </div>
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="bg-white py-10 border rounded-2xl mt-4 shadow-sm">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:divide-x sm:divide-dashed divide-indigo-500 text-center">
+        
+        <div class="flex flex-col items-center space-y-2">
+          <dd class="text-4xl font-bold text-gray-900">{{ tasks_count }}</dd>
+          <dt class="text-sm font-medium text-gray-500">Task{{ tasks_count|pluralize }} Available</dt>
         </div>
+
+        <div class="flex flex-col items-center space-y-2">
+          <dd class="text-4xl font-bold text-gray-900">{{ completed_count }}</dd>
+          <dt class="text-sm font-medium text-gray-500">Task{{ completed_count|pluralize }} Completed</dt>
+        </div>
+
+        <div class="flex flex-col items-center space-y-2">
+          <dd class="text-4xl font-bold text-gray-900">{{ not_completed }}</dd>
+          <dt class="text-sm font-medium text-gray-500">Task{{ not_completed|pluralize }} Not Completed</dt>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

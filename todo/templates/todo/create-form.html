@@ -1,14 +1,19 @@
 {% extends 'main.html' %}
 
 {% block content %}
-
+{% include 'todo/navbar.html' %}
 <div class="isolate bg-white px-6 py-16 sm:py-20 lg:px-8">
     <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Create New Task</h2>
-        <p class="mt-2 text-lg text-gray-600">Fill out the form below to add a new task to your todo list.</p>
+        {% if title == 'create' %}
+            <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Create New Task</h2>
+            <p class="mt-2 text-lg text-gray-600">Fill out the form below to add a new task to your todo list.</p>
+        {% else %}
+            <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Update the Task</h2>
+            <p class="mt-2 text-lg text-gray-600">Change teh data in below Form to update todo list.</p>
+        {% endif %}
     </div>
-
-    <form method="POST" action="" class="w-1/2 mx-auto mt-12 sm:mt-16">
+    
+    <form method="POST" action="" class="w-full max-w-xl mx-auto mt-12 sm:mt-16 px-4 sm:px-0">
         {% csrf_token %}
         <div class="grid grid-cols-1 gap-x-8 gap-y-6">
             <!-- Title -->
@@ -39,6 +44,13 @@
                 <label for="due_date" class="block text-sm font-semibold text-gray-900">Due Date</label>
                 {{form.due_date}}
             </div>
+            {% if title == 'update' %}
+            <!-- Is completed -->
+            <div>
+                <label for="is_completed" class="block text-sm font-semibold text-gray-900">Completed</label>
+                {{form.is_completed}}
+            </div>
+            {% endif %}
 
             <!-- Priority -->
             <div>
@@ -54,7 +66,7 @@
                 </a>
                 <button type="submit"
                     class="w-full inline-block px-6 py-2 text-black border transition duration-300 hover:bg-black hover:text-white font-semibold rounded-xl shadow-md">
-                    Submit Task
+                    Submit
                 </button>
             </div>
         </div>

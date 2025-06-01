@@ -1,3 +1,4 @@
+{% load static %}
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,11 +9,10 @@
     {% tailwind_css %}
 </head>
 <body>
-    <!-- {% if request.path != '/users/login/' and request.path != '/users/register/' %}
-    {% include 'navbar.html' %}
-    {% endif %} -->
+    
     {% block content %}
-
+    
     {% endblock %}
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

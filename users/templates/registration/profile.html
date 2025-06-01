@@ -3,11 +3,16 @@
 {% block content %}
 
 <div class="bg-white overflow-hidden">
-    <a href="{% url 'home' %}" class="pl-5 text-5xl hover:text-blue-400 cursor-pointer transform duration-300"> &larr;</a>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
+            <!-- Image Section -->
+            <div class="flex justify-center">
+                <img src="{% static 'img/img_1.png' %}
+                        " 
+                alt="Profile Illustration"
+                class="w-52 sm:w-64 lg:w-80 h-auto rounded-full object-cover border-4 border-indigo-100 shadow-md">
+            </div>
             <!-- Text Section -->
             <div class="text-center lg:text-left">
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-snug">
@@ -20,7 +25,7 @@
 
                 <div class="mt-8">
                     <a href="{% url 'create' %}"
-                        class="inline-block px-6 py-3 border-1 text-black text-sm sm:text-base font-medium rounded-xl shadow hover:bg-black hover:text-white hover:shadow-lg transition">
+                        class="inline-block mr-2 px-6 py-3 border-1 text-black text-sm sm:text-base font-medium rounded-xl shadow hover:bg-black hover:text-white hover:shadow-lg transition">
                         Create todo +
                     </a>
                     <a href="{% url 'logout' %}"
@@ -28,12 +33,6 @@
                         Log out
                     </a>
                 </div>
-            </div>
-
-            <!-- Image Section -->
-            <div class="flex justify-center">
-                <img src="{% static 'img/img_1.png' %}" alt="Profile Illustration"
-                    class="w-52 sm:w-64 lg:w-80 h-auto rounded-full object-cover border-4 border-indigo-100 shadow-md">
             </div>
         </div>
         <div class="mt-44">

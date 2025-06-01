@@ -8,9 +8,9 @@
     {% tailwind_css %}
 </head>
 <body>
-    {% if request.path != '/users/login/' and request.path != '/users/register/' %}
-        {% include 'navbar.html' %}
-    {% endif %}
+    <!-- {% if request.path != '/users/login/' and request.path != '/users/register/' %}
+    {% include 'navbar.html' %}
+    {% endif %} -->
     {% block content %}
 
     {% endblock %}

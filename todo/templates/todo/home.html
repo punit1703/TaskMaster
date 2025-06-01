@@ -1,52 +1,30 @@
 {% extends 'main.html' %}
 
 {% block content %}
+<div class="md:flex-row gap-6">
+    {% include 'todo/navbar.html' %}
+    <header class="shadow-sm bg-white">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex items-center justify-between">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Hey {{request.user|capfirst}} 👋 Hope you're having a productive day!</h1>
 
-<style>
-    .container {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-    }
-</style>
-<div class="container">
-    <div class="sidebar">
-        <div class="user">
-
+            <a href="{% url 'create' %}"
+                class="inline-block px-6 py-2 text-black border transition duration-300 hover:bg-black hover:text-white font-semibold rounded-xl shadow-md">
+                + Create Todo
+            </a>
         </div>
-        <div class="categories">
-            <h3>Categories</h3>
-            <h4><a href="{% url 'home' %}">All</a></h4>
-            {% for category in categories %}
-            <h4><a href="{% url 'home' %}?q={{category.name}}">{{category.name}}</a></h4>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="todo-list">
-        <p>{{tasks_count}} Task Available</p>
-        <p>{{completed_count}} Task completed</p>
-        <p>{{not_completed}} Task not completed</p>
-        <a href="{% url 'create' %}">Create</a>
-        {% for task in tasks %}
-            <form method="POST" action="{% url 'toggle-completion' task.id %}">
-                {% csrf_token %}
-                <input 
-                type="checkbox" 
-                name="completed" 
-                onchange="this.form.submit()" 
-                {% if task.is_completed %}
-                  checked
-                {% endif %}>
+    </header>
 
-                {% if task.is_completed %}
-                    <span style="color: green;">(Completed)</span>
-                {% endif %}
-            </form>
-            <h2><a href="{% url 'todo-view' task.id %}">{{task.title}}</a></h2>
-            <h3>Category: <small>{{task.category}}</small></h3>
-            <a href="{% url 'todo-update' task.id %}">Edit</a>
-            <a href="{% url 'todo-delete' task.id %}">Delete</a>
-            <hr>
-        {% endfor %}
+
+    <main>
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <!-- Your content -->
+        </div>
+    </main>
+    <div class="p-6 w-full">
+        {% include 'todo/todo-list.html' %}
+        {% include 'todo/stat.html' %}
+
     </div>
+
 </div>
 {% endblock %}

@@ -26,6 +26,10 @@ class Task(models.Model):
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='Medium')
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-updated','-created_at']
 
     def __str__(self):
         return self.title

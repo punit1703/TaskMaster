@@ -1,10 +1,64 @@
 {% extends 'main.html' %}
 
 {% block content %}
-  <h2>Create New Task</h2>
-  <form action="" method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Submit</button>
-  </form>
-{% endblock content %}
+
+<div class="isolate bg-white px-6 py-16 sm:py-20 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Create New Task</h2>
+        <p class="mt-2 text-lg text-gray-600">Fill out the form below to add a new task to your todo list.</p>
+    </div>
+
+    <form method="POST" action="" class="w-1/2 mx-auto mt-12 sm:mt-16">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 gap-x-8 gap-y-6">
+            <!-- Title -->
+            <div>
+                <label for="title" class="block text-sm font-semibold text-gray-900">Title</label>
+                {{form.title}}
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label for="description" class="block text-sm font-semibold text-gray-900">Description</label>
+                {{form.description}}
+            </div>
+
+            <!-- category -->
+            <div>
+                <label for="id_category" class="block text-sm font-semibold text-gray-900">Category</label>
+                {{ form.category }}
+                <datalist id="category-list">
+                    {% for category in categories %}
+                    <option value="{{ category.name }}"></option>
+                    {% endfor %}
+                </datalist>
+            </div>
+
+            <!-- Due Date -->
+            <div>
+                <label for="due_date" class="block text-sm font-semibold text-gray-900">Due Date</label>
+                {{form.due_date}}
+            </div>
+
+            <!-- Priority -->
+            <div>
+                <label for="priority" class="block text-sm font-semibold text-gray-900">Priority</label>
+                {{form.priority}}
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-1 flex space-x-2">
+                <a href="{{request.META.HTTP_REFERER}}"
+                    class="inline-block px-10 py-2 text-black border transition duration-300 hover:bg-black hover:text-white font-semibold rounded-xl shadow-md">
+                    Cancle
+                </a>
+                <button type="submit"
+                    class="w-full inline-block px-6 py-2 text-black border transition duration-300 hover:bg-black hover:text-white font-semibold rounded-xl shadow-md">
+                    Submit Task
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

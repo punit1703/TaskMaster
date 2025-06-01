@@ -1,0 +1,40 @@
+<section class="text-gray-600 body-font overflow-hidden">
+  {% include 'todo/delete-alert.html' %}
+  <div class="container  mx-auto">
+    <div class="space-y-10 px-5">
+      {% for task in tasks %}
+
+      <div class="border rounded-2xl p-4  my-5 flex flex-col md:divide-x md:divide-dashed md:flex-row md:items-start md:space-x-6 border-b pb-6 transition-transform duration-300 transform hover:scale-[1.03]">
+
+        <!-- Left Column: Category & Time -->
+        <div class="md:w-1/4 mb-4 md:mb-0">
+          <span class="font-semibold title-font text-gray-700 block">{{ task.category|capfirst }}</span>
+          <span class="mt-1 text-gray-500 text-sm block">{{ task.created_at|timesince }}</span>
+        </div>
+
+        <!-- Right Column: Title & Description -->
+        <a href="{% url 'todo-view' task.id %}">
+          <div class="md:w-3/4">
+            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+              {{ task.title }}
+            </h2>
+            <p class="leading-relaxed text-justify">
+              {{ task.description }}
+            </p>
+            {% if task.is_completed %}
+              <small class="font-bold leading-relaxed text-justify text-green-500">
+                Completed
+              </small>
+            {% else %}
+              <small class="font-bold leading-relaxed text-justify text-red-500">
+                Not Completed
+              </small>
+            {% endif %}
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+
+</section>

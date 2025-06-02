@@ -33,6 +33,7 @@ def homePage(request):
     tasks = Task.objects.filter(user=request.user).filter(
         Q(title__icontains=q) |
         Q(category__name__icontains=q) |
+        Q(priority__icontains=q) |
         Q(description__icontains=q) |
         Q(is_completed__icontains=q)
     )
@@ -78,7 +79,7 @@ def createTodo(request):
 
 @login_required(login_url='login')
 def todoUpdate(request, pk):
-    task = get_object_or_404(Task, id=pk, user=request.user)
+    task = Task.objects.get(id=pk)
     form = TodoForm(instance=task)
     categories = Category.objects.filter(user=request.user)
 
@@ -96,13 +97,13 @@ def todoUpdate(request, pk):
 
         return redirect('home')
 
-    return render(request, 'todo/create-form.html', {
+    context = {
         'form': form,
         'task': task,
         'categories': categories,
         'title': 'update'
-    })
-
+    }
+    return render(request, 'todo/create-form.html', context )
 
 @login_required(login_url='login')
 def deleteTodo(request, pk):

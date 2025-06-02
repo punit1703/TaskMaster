@@ -19,11 +19,7 @@ venv.bak/
 *.pyc
 *.db
 db.sqlite3
-
-# Only ignore migration __pycache__ but keep actual migration scripts
 **/__pycache__/
-# Remove the below if you want to track migrations (recommended)
-# migrations/
 
 # === OS Specific ===
 .DS_Store
@@ -39,7 +35,7 @@ Thumbs.db
 media/
 *.sass-cache
 *.coverage
-# theme/static_src/
+# Don't ignore these static folders
 !staticfiles/
 !theme/static/
 
@@ -54,7 +50,6 @@ media/
 node_modules/
 
 # === Build Files ===
-dist/
 build/
 
 # === Backup Files ===

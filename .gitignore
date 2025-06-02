@@ -39,7 +39,9 @@ Thumbs.db
 media/
 *.sass-cache
 *.coverage
-theme/static_src/
+# theme/static_src/
+!staticfiles/
+!theme/static/
 
 # === Environment Files ===
 .env

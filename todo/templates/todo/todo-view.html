@@ -6,47 +6,48 @@
 <div class="w-full max-w-3xl px-4 sm:px-6 lg:px-8 py-3 mx-auto">
     {% include 'todo/delete-alert.html' with task=task %}
     <div class="mx-auto text-center">
+        <div class="p-4 sm:p-0">
+            <h3 class="text-5xl font-semibold text-gray-900">Todo Information</h3>
+        </div>
+        <div class="mt-6 border-t border-gray-100">
+            <dl class="divide-y divide-gray-300">
+                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt class="text-sm font-medium text-gray-900">Title</dt>
+                    <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{ task.title }}</dd>
+                </div>
 
-    
-    <div class="p-4 sm:p-0">
-        <h3 class="text-5xl font-semibold text-gray-900">Todo Information</h3>
-    </div>
-    <div class="mt-6 border-t border-gray-100">
-        <dl class="divide-y divide-gray-300">
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-sm/6 font-medium text-gray-900">Title</dt>
-                <dd class=" mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{task.title}}</dd>
-            </div>
-            
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-sm/6 font-medium text-gray-900">Description</dt>
-                <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{task.description}}</dd>
-            </div>
+                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt class="text-sm font-medium text-gray-900">Description</dt>
+                    <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{ task.description }}</dd>
+                </div>
 
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-sm/6 font-medium text-gray-900">Due date</dt>
-                <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{task.due_date}}</dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-sm/6 font-medium text-gray-900">Category</dt>
-                <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{task.category}}</dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-sm/6 font-medium text-gray-900">Created</dt>
-                <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">{{task.created_at|timesince}} ago</dd>
-            </div>
-        </dl>
-    </div>
-    <div class="w-full mt-6 px-4 flex flex-col sm:flex-row gap-4">
-        <a href="{% url 'todo-update' task.id %}" 
-            class="sm:mt-2 w-full inline-block px-6 py-2 text-center text-black border transition duration-300 hover:bg-black hover:text-white font-semibold rounded-xl shadow-md">
-            Edit
-        </a>
-        <button onclick="openModal()"
-            class="sm:mt-2 w-full inline-block px-6 py-2 text-center text-red-500 border transition duration-300 hover:bg-red-500 hover:text-white font-semibold rounded-xl shadow-md">
-            Delete
-        </button>
-    </div>
+                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt class="text-sm font-medium text-gray-900">Due date</dt>
+                    <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{ task.due_date }}</dd>
+                </div>
+
+                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt class="text-sm font-medium text-gray-900">Category</dt>
+                    <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{ task.category }}</dd>
+                </div>
+
+                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt class="text-sm font-medium text-gray-900">Created</dt>
+                    <dd class="mt-1 text-sm text-gray-700 sm:col-span-2 sm:mt-0">{{ task.created_at|timesince }} ago</dd>
+                </div>
+            </dl>
+        </div>
+
+        <div class="w-full mt-6 px-4 flex flex-col sm:flex-row gap-4">
+            <a href="{% url 'todo-update' task.id %}"
+               class="sm:mt-2 w-full inline-block px-6 py-2 text-center text-black border transition duration-300 hover:bg-black hover:text-white font-semibold rounded-xl shadow-md">
+                Edit
+            </a>
+            <button onclick="openModal()"
+                    class="sm:mt-2 w-full inline-block px-6 py-2 text-center text-red-500 border transition duration-300 hover:bg-red-500 hover:text-white font-semibold rounded-xl shadow-md">
+                Delete
+            </button>
+        </div>
     </div>
 </div>
 

@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo',
     'users',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
     'tailwind',
     'theme',
     'django_browser_reload',

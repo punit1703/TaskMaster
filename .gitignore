@@ -19,7 +19,11 @@ venv.bak/
 *.pyc
 *.db
 db.sqlite3
-migrations/
+
+# Only ignore migration __pycache__ but keep actual migration scripts
+**/__pycache__/
+# Remove the below if you want to track migrations (recommended)
+# migrations/
 
 # === OS Specific ===
 .DS_Store
@@ -32,19 +36,19 @@ Thumbs.db
 *.sublime-project
 
 # === Static & Media Files ===
-staticfiles/
 media/
 *.sass-cache
 *.coverage
+theme/static_src/
 
 # === Environment Files ===
 .env
 .env.*
 
-# === Compiled HTML/CSS/JS (optional) ===
+# === Compiled HTML/CSS/JS ===
 *.map
 
-# === Node Modules (if you use Tailwind or npm) ===
+# === Node Modules (Tailwind or npm) ===
 node_modules/
 
 # === Build Files ===

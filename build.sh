@@ -1,9 +1,13 @@
+#!/usr/bin/env bash
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Install Tailwind dependencies
 npm install
 python manage.py tailwind install
 python manage.py tailwind build
 
-# Apply database migrations
+# DB and static setup
 python manage.py migrate
-
-# Collect static files (for admin panel and Tailwind)
 python manage.py collectstatic --noinput

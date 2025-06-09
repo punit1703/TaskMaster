@@ -12,6 +12,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from environ import Env
+import psycopg2
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+DATABASES = {
+    'default': os.getenv("DATABASE_URL")
+}
+
 env = Env()
 Env.read_env()
 
